@@ -14,21 +14,20 @@
       ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
       ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
-    <!-- Import map kept for preview environments, but Vite will use package.json dependencies -->
-    <script type="importmap">
+  <script type="importmap">
 {
   "imports": {
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "qr-code-styling": "https://aistudiocdn.com/qr-code-styling@^1.9.2",
-    "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+    "qr-code-styling": "https://aistudiocdn.com/qr-code-styling@^1.9.2"
   }
 }
 </script>
-  </head>
+</head>
   <body class="bg-gray-50 text-slate-800 antialiased">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>

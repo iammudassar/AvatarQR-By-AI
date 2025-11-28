@@ -1,21 +1,9 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { AIColorSuggestion } from "../types";
 
-// Support both standard process.env (Node/AI Studio) and Vite's import.meta.env
-// This makes the code portable for users hosting it themselves.
-const getApiKey = () => {
-  if (typeof process !== 'undefined' && process.env.API_KEY) {
-    return process.env.API_KEY;
-  }
-  // @ts-ignore - handling Vite environment
-  if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_KEY) {
-    // @ts-ignore
-    return import.meta.env.VITE_API_KEY;
-  }
-  return '';
-};
-
-const ai = new GoogleGenAI({ apiKey: getApiKey() });
+// Initialize the Gemini API client exclusively with process.env.API_KEY
+// As per guidelines, we assume process.env.API_KEY is pre-configured and valid.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const analyzeLogoAndSuggestColors = async (base64Image: string): Promise<AIColorSuggestion> => {
   try {

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import QRCodeStyling from 'qr-code-styling'; // Assuming this package is installed
+import QRCodeStyling from 'qr-code-styling'; 
 import { QRStyleOptions } from '../types';
 
 interface QRCodeCanvasProps {
@@ -43,6 +43,8 @@ const QRCodeCanvas: React.FC<QRCodeCanvasProps> = ({ data, styleOptions, onDownl
     });
 
     if (ref.current) {
+      // Cleanup previous children to prevent duplicates in Strict Mode
+      ref.current.innerHTML = '';
       qrCode.current.append(ref.current);
     }
   }, []);
@@ -75,7 +77,7 @@ const QRCodeCanvas: React.FC<QRCodeCanvasProps> = ({ data, styleOptions, onDownl
   useEffect(() => {
     if (onDownloadTrigger && onDownloadTrigger > 0 && qrCode.current) {
       qrCode.current.download({
-        name: "brand-qr-code",
+        name: "avatar-qr-code",
         extension: "png"
       });
     }
