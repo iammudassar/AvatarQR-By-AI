@@ -11,68 +11,46 @@ AvatarQR is a React-based application that creates stunning, branded QR codes. I
 
 ## 🛠️ How to Host on Your Server
 
-This is a **client-side Single Page Application (SPA)** built with React. To host it on a simple server (like Apache, Nginx, Hostinger, GoDaddy, Netlify, or Vercel), you need to build the project first.
-
-The recommended way to host this source code is using **Vite**.
+The project now includes all necessary configuration files (`package.json`, `vite.config.ts`, `tsconfig.json`) to easily build and host it anywhere.
 
 ### 1. Prerequisites
 
-- Node.js installed on your computer.
-- A Google Gemini API Key.
+- **Node.js** (v16 or higher) installed on your computer.
+- A **Google Gemini API Key** (Get one at [aistudio.google.com](https://aistudio.google.com/)).
 
-### 2. Setup Project
+### 2. Installation
 
-1. Open your terminal.
-2. Create a new Vite project:
+1. Download all the files in this project to a folder on your computer.
+2. Open your terminal/command prompt in that folder.
+3. Install the dependencies:
    ```bash
-   npm create vite@latest avatar-qr -- --template react-ts
-   cd avatar-qr
+   npm install
    ```
-3. Install the required dependencies:
-   ```bash
-   npm install @google/genai qr-code-styling lucide-react
-   ```
-   *(Note: Tailwind CSS is used via CDN in `index.html` for simplicity in this version, but you can also install it via npm if preferred).*
 
-### 3. Copy Source Files
+### 3. Configuration
 
-Copy the provided source files into your new Vite project's `src` folder:
-- `App.tsx`
-- `types.ts`
-- `constants.ts`
-- `services/` folder
-- `components/` folder
+Create a file named `.env` in the root folder and add your API Key. This is required for the "AI Logo Analysis" feature to work.
 
-Ensure your `index.html` (in the root) includes the Tailwind CDN:
-```html
-<script src="https://cdn.tailwindcss.com"></script>
+```env
+VITE_API_KEY=your_actual_api_key_here
 ```
 
-### 4. Configure API Key
+### 4. Build for Production
 
-To enable the AI features (logo analysis), you need to provide your Google Gemini API Key.
+Run the build command to generate the static files:
 
-1. Create a file named `.env` in the root of your project.
-2. Add your key:
-   ```
-   VITE_API_KEY=your_google_api_key_here
-   ```
+```bash
+npm run build
+```
 
-The application is already configured to look for `VITE_API_KEY` when running in a Vite environment.
+This will create a `dist` folder in your project directory.
 
-### 5. Build and Deploy
+### 5. Deploy
 
-1. Run the build command:
-   ```bash
-   npm run build
-   ```
-2. This will create a `dist` folder.
-3. **Upload the contents of the `dist` folder** to your web server's public directory (e.g., `public_html`).
+The contents of the `dist` folder are all you need to host the app.
 
-That's it! Your app is now live.
+- **Standard Web Hosting (cPanel, Hostinger, GoDaddy):** Upload the contents of the `dist` folder to your `public_html` folder via File Manager or FTP.
+- **Netlify / Vercel:** You can connect your GitHub repository and the build settings will be detected automatically (Build command: `npm run build`, Output directory: `dist`). Remember to add `VITE_API_KEY` in the Environment Variables settings of your dashboard.
+- **Apache / Nginx:** Serve the `dist` folder as static files.
 
-## 📦 Deployment Options
-
-- **Netlify/Vercel:** Simply connect your GitHub repository and set the `VITE_API_KEY` in the dashboard settings.
-- **Shared Hosting (cPanel):** Upload the `dist` folder contents via FTP.
-- **Docker:** Use a simple Nginx container to serve the `dist` folder.
+That's it! Your AI-powered QR Code generator is ready to use.
