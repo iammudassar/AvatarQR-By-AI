@@ -1,11 +1,39 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { AIColorSuggestion } from "../types";
 
-// Initialize the Gemini API client exclusively with process.env.API_KEY
-// As per guidelines, we assume process.env.API_KEY is pre-configured and valid.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Safe retrieval of API Key to prevent runtime crashes if env is malformed
+const getApiKey = (): string => {
+  try {
+    // 1. Try standard Vite environment variable
+    if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_KEY) {
+      return import.meta.env.VITE_API_KEY;
+    }
+    // 2. Try process.env fallback (polyfilled in vite.config.ts)
+    // @ts-ignore - process might not be defined in types but replaced by Vite
+    if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+      return process.env.API_KEY;
+    }
+  } catch (e) {
+    console.warn("Failed to retrieve API key from environment", e);
+  }
+  return "MISSING_KEY";
+};
+
+const apiKey = getApiKey();
+
+const ai = new GoogleGenAI({ apiKey });
 
 export const analyzeLogoAndSuggestColors = async (base64Image: string): Promise<AIColorSuggestion> => {
+  // Fail fast if key is missing
+  if (apiKey === "MISSING_KEY" || !apiKey) {
+    console.error("Gemini API Key is missing. Please create a .env file with VITE_API_KEY=your_key");
+    return {
+      primary: '#000000',
+      secondary: '#4b5563',
+      accent: '#3b82f6'
+    };
+  }
+
   try {
     // Remove header if present (e.g., "data:image/png;base64,")
     const cleanBase64 = base64Image.split(',')[1] || base64Image;
