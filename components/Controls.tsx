@@ -93,7 +93,7 @@ const Controls: React.FC<ControlsProps> = ({
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://example.com"
-              className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
             />
           </div>
         )}
@@ -106,7 +106,7 @@ const Controls: React.FC<ControlsProps> = ({
               onChange={(e) => setText(e.target.value)}
               rows={4}
               placeholder="Enter your message here..."
-              className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+              className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
             />
           </div>
         )}
@@ -119,7 +119,7 @@ const Controls: React.FC<ControlsProps> = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="contact@example.com"
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
               />
             </div>
           )}
@@ -132,7 +132,7 @@ const Controls: React.FC<ControlsProps> = ({
                 type="text" 
                 value={wifiData.ssid}
                 onChange={(e) => setWifiData({...wifiData, ssid: e.target.value})}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-white"
               />
             </div>
             <div>
@@ -141,7 +141,7 @@ const Controls: React.FC<ControlsProps> = ({
                 type="text" 
                 value={wifiData.password}
                 onChange={(e) => setWifiData({...wifiData, password: e.target.value})}
-                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none bg-white"
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -150,7 +150,7 @@ const Controls: React.FC<ControlsProps> = ({
                 <select 
                   value={wifiData.encryption}
                   onChange={(e) => setWifiData({...wifiData, encryption: e.target.value as any})}
-                  className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 outline-none bg-white"
                 >
                   <option value="WPA">WPA/WPA2</option>
                   <option value="WEP">WEP</option>
@@ -163,7 +163,7 @@ const Controls: React.FC<ControlsProps> = ({
                       type="checkbox" 
                       checked={wifiData.hidden}
                       onChange={(e) => setWifiData({...wifiData, hidden: e.target.checked})}
-                      className="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500"
+                      className="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500 bg-white"
                     />
                     <span className="text-sm text-slate-700">Hidden Network</span>
                  </label>
@@ -176,27 +176,27 @@ const Controls: React.FC<ControlsProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="col-span-1">
                 <label className="block text-xs font-medium text-slate-500 uppercase">First Name</label>
-                <input type="text" value={vCardData.firstName} onChange={e => setVCardData({...vCardData, firstName: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm" />
+                <input type="text" value={vCardData.firstName} onChange={e => setVCardData({...vCardData, firstName: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white" />
             </div>
             <div className="col-span-1">
                 <label className="block text-xs font-medium text-slate-500 uppercase">Last Name</label>
-                <input type="text" value={vCardData.lastName} onChange={e => setVCardData({...vCardData, lastName: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm" />
+                <input type="text" value={vCardData.lastName} onChange={e => setVCardData({...vCardData, lastName: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white" />
             </div>
             <div className="col-span-1">
                 <label className="block text-xs font-medium text-slate-500 uppercase">Phone</label>
-                <input type="tel" value={vCardData.phone} onChange={e => setVCardData({...vCardData, phone: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm" />
+                <input type="tel" value={vCardData.phone} onChange={e => setVCardData({...vCardData, phone: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white" />
             </div>
             <div className="col-span-1">
                 <label className="block text-xs font-medium text-slate-500 uppercase">Email</label>
-                <input type="email" value={vCardData.email} onChange={e => setVCardData({...vCardData, email: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm" />
+                <input type="email" value={vCardData.email} onChange={e => setVCardData({...vCardData, email: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white" />
             </div>
             <div className="col-span-2">
                 <label className="block text-xs font-medium text-slate-500 uppercase">Organization</label>
-                <input type="text" value={vCardData.org} onChange={e => setVCardData({...vCardData, org: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm" />
+                <input type="text" value={vCardData.org} onChange={e => setVCardData({...vCardData, org: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white" />
             </div>
              <div className="col-span-2">
                 <label className="block text-xs font-medium text-slate-500 uppercase">Website</label>
-                <input type="url" value={vCardData.website} onChange={e => setVCardData({...vCardData, website: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm" />
+                <input type="url" value={vCardData.website} onChange={e => setVCardData({...vCardData, website: e.target.value})} className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white" />
             </div>
           </div>
         )}
@@ -214,7 +214,7 @@ const Controls: React.FC<ControlsProps> = ({
                         type="file" 
                         accept="image/*"
                         onChange={handleLogoUpload}
-                        className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+                        className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 bg-white rounded-lg border border-slate-100"
                     />
                 </div>
                 <p className="mt-2 text-xs text-slate-500">Supported: PNG, JPG, SVG.</p>
@@ -260,7 +260,7 @@ const Controls: React.FC<ControlsProps> = ({
                 <select 
                     value={styleOptions.dotType} 
                     onChange={e => setStyleOptions({...styleOptions, dotType: e.target.value as any})}
-                    className="w-full text-sm border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    className="w-full text-sm border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-white"
                 >
                     {DOT_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                 </select>
@@ -270,7 +270,7 @@ const Controls: React.FC<ControlsProps> = ({
                 <select 
                     value={styleOptions.cornerSquareType} 
                     onChange={e => setStyleOptions({...styleOptions, cornerSquareType: e.target.value as any})}
-                    className="w-full text-sm border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    className="w-full text-sm border-slate-300 rounded-lg shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-white"
                 >
                     {CORNER_SQUARE_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                 </select>
