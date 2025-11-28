@@ -1,5 +1,5 @@
 import React from 'react';
-import { SavedQRCode, QRContentType } from '../types';
+import { SavedQRCode } from '../types';
 import QRCodeCanvas from './QRCodeCanvas';
 
 interface LibraryModalProps {

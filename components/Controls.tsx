@@ -3,8 +3,7 @@ import {
   QRContentType, 
   WifiData, 
   VCardData, 
-  QRStyleOptions, 
-  AIColorSuggestion 
+  QRStyleOptions 
 } from '../types';
 import { CONTENT_TYPES, DOT_TYPES, CORNER_SQUARE_TYPES } from '../constants';
 
