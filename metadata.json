@@ -1,5 +1,5 @@
 {
-  "name": "AvatarQR - AI Powered Generator",
-  "description": "Create stunning, branded QR codes with custom logos and colors. Features AI-powered style matching and account saving capabilities.",
+  "name": "AvatarQR",
+  "description": "Create stunning, branded QR codes with custom logos. Features account saving capabilities.",
   "requestFramePermissions": []
 }

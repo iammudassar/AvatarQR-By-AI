@@ -42,12 +42,6 @@ export interface QRStyleOptions {
   cornerDotType: 'square' | 'dot';
 }
 
-export interface AIColorSuggestion {
-  primary: string;
-  secondary: string;
-  accent: string;
-}
-
 export interface User {
   email: string;
   name: string;

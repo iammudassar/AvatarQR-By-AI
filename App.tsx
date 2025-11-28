@@ -12,7 +12,6 @@ import Controls from './components/Controls';
 import QRCodeCanvas from './components/QRCodeCanvas';
 import AuthModal from './components/AuthModal';
 import LibraryModal from './components/LibraryModal';
-import { analyzeLogoAndSuggestColors } from './services/geminiService';
 
 const App: React.FC = () => {
   // --- Auth State ---
@@ -34,7 +33,6 @@ const App: React.FC = () => {
   
   // --- App UX State ---
   const [downloadTrigger, setDownloadTrigger] = useState(0);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   // --- Auth & Persistence Logic ---
   useEffect(() => {
@@ -148,31 +146,6 @@ END:VCARD`;
     }
   }, [contentType, url, text, email, wifiData, vCardData]);
 
-  const handleLogoAnalysis = async (file: File) => {
-    setIsAnalyzing(true);
-    try {
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        const base64 = e.target?.result as string;
-        if (base64) {
-          const colors = await analyzeLogoAndSuggestColors(base64);
-          setStyleOptions(prev => ({
-            ...prev,
-            dotsColor: colors.primary,
-            cornerSquareColor: colors.secondary,
-            cornerDotColor: colors.secondary,
-            backgroundColor: '#ffffff' 
-          }));
-        }
-        setIsAnalyzing(false);
-      };
-      reader.readAsDataURL(file);
-    } catch (e) {
-      console.error(e);
-      setIsAnalyzing(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
       
@@ -253,8 +226,6 @@ END:VCARD`;
                wifiData={wifiData} setWifiData={setWifiData}
                vCardData={vCardData} setVCardData={setVCardData}
                styleOptions={styleOptions} setStyleOptions={setStyleOptions}
-               onAnalyzeLogo={handleLogoAnalysis}
-               isAnalyzing={isAnalyzing}
              />
           </div>
 
@@ -293,20 +264,6 @@ END:VCARD`;
                   Login to save your designs and edit them later.
                 </p>
              </div>
-             
-             {/* Pro Tip Card */}
-             <div className="mt-6 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-100 rounded-xl p-4 flex items-start space-x-3 shadow-sm">
-                <div className="text-indigo-600 mt-0.5">
-                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                </div>
-                <div>
-                   <h4 className="text-sm font-bold text-indigo-900">AvatarQR Magic</h4>
-                   <p className="text-sm text-indigo-800 mt-1">
-                     Upload your logo and let our AI create a color palette that perfectly matches your brand identity.
-                   </p>
-                </div>
-             </div>
-
           </div>
 
         </div>
